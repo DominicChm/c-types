@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "jest --config jestconfig.json",
-    "coverage": "jest --config jestconfig.json --coverage",
+    "test": "jest",
+    "coverage": "jest --coverage",
     "build": "tsc"
   },
   "repository": {
