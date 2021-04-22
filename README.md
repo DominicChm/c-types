@@ -37,3 +37,4 @@ const simpler_ctype = end(uint32, "little");
 simpler_ctype.write(123, buf);
 simpler_ctype.read(buf);
 
+```
