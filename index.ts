@@ -24,3 +24,7 @@ export {float, double}
 export {c_string, c_array, end}
 
 export let number_types = {uint8, uint16, uint32, int8, int16, int32, float, double};
+
+// Export interfaces and types
+export * from "./interfaces/ICType"
+export * from "./interfaces/ICTypeConstEndian"
