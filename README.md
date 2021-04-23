@@ -1,6 +1,6 @@
 # c-type-util
 
-c-types is a utility library to help with encoding and decoding data in Node.js's
+c-type-util is a utility library to help with encoding and decoding data in Node.js's
 [Buffers](https://nodejs.org/api/buffer.html). It provides a standard interface to read/write different types, making it
 useful for creating dynamic parsers.
 
