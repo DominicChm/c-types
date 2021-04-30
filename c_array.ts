@@ -2,9 +2,8 @@ import {ICType} from "./interfaces/ICType";
 
 
 export function c_array(type: ICType, length: number): ICType {
-    const size = type.size * length;
-
     return {
+        size: type.size * length,
         readBE(buf: Buffer, offset: number = 0): any[] {
             const result = [];
             for (let i = 0; i < length; i++) {
@@ -36,7 +35,6 @@ export function c_array(type: ICType, length: number): ICType {
                 const iOffset = offset + i * type.size;
                 type.writeLE(data[i], buf, iOffset);
             }
-        },
-        size
+        }
     }
 }
