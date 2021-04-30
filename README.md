@@ -11,7 +11,7 @@ useful for creating dynamic parsers.
 ## Usage
 
 ```typescript
-import {uint32, c_array, c_string, end} from "./index";
+import {uint32, uint16, c_array, c_string, end, c_struct} from "c-type-util";
 
 //Big buffer for testing purposes
 let buf = Buffer.alloc(128);
@@ -36,5 +36,24 @@ uint32.readLE(buf, 4);
 const simpler_ctype = end(uint32, "little");
 simpler_ctype.write(123, buf);
 simpler_ctype.read(buf);
+
+// Example Struct
+const struct = c_struct([
+    {
+        type: uint32,
+        name: "example_member32"
+    },
+    {
+        type: c_array(uint16, 4),
+        name: "example_member_array"
+    }
+])
+
+struct.writeLE({
+    example_member: 1234,
+    example_member_array: [1, 2, 3, 4]
+}, buf)
+
+console.log(struct.readLE(buf))
 
 ```
