@@ -17,14 +17,14 @@ export function c_string(length: number): ICType {
             buf.write(data, offset, size, "ascii");
 
             // Ensure that the last string value is a null terminator.
-            buf.writeUInt8(0x00, offset + size);
+            buf.writeUInt8(0x00, offset + size - 1);
 
         },
         writeLE(data: string, buf: Buffer, offset: number = 0): void {
             buf.write(data, offset, size, "ascii");
 
             // Ensure that the last string value is a null terminator.
-            buf.writeUInt8(0x00, offset + size);
+            buf.writeUInt8(0x00, offset + size - 1);
         },
         size
     }

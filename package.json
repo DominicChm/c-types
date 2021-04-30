@@ -1,6 +1,6 @@
 {
   "name": "c-type-util",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A utility module to simplify usage of Node.js's Buffers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
