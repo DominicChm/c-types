@@ -11,7 +11,7 @@ useful for creating dynamic parsers.
 ## Usage
 
 ```typescript
-import {uint32, uint16, c_array, c_string, end, c_struct} from "./index";
+import {uint32, uint16, c_array, c_string, end, c_struct} from "c-type-util";
 
 //Big buffer for testing purposes
 let buf = Buffer.alloc(128);
