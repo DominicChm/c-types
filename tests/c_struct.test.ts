@@ -1,8 +1,15 @@
-import {c_string, uint16, uint32, c_struct} from "../index"
+import {c_string, uint16, uint32, c_struct} from "../src"
+
+interface ITestStruct {
+    [key: string]: number;
+
+    u16_test: number,
+    u32_test: number
+}
 
 describe("c_struct", () => {
     it("encodes LE correctly", () => {
-        const struct = c_struct([
+        const struct = c_struct<ITestStruct>([
             {
                 name: "u16_test",
                 type: uint16,
@@ -27,7 +34,7 @@ describe("c_struct", () => {
     });
 
     it("encodes BE correctly", () => {
-        const struct = c_struct([
+        const struct = c_struct<ITestStruct>([
             {
                 name: "u16_test",
                 type: uint16,
@@ -52,7 +59,7 @@ describe("c_struct", () => {
     });
 
     it("encodes, then decodes", () => {
-        const struct = c_struct([
+        const struct = c_struct<ITestStruct>([
             {
                 name: "u16_test",
                 type: uint16,

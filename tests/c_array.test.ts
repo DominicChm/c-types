@@ -1,7 +1,6 @@
-import {c_array, number_types, ICType} from "../index"
-import each from "jest-each";
+import {c_array, number_types, ICType} from "../src"
 
-each(Object.values(number_types)).describe("c_array", (c_type: ICType) => {
+describe.each(Object.values(number_types))("c_array", (c_type: ICType<number>) => {
     test("short data write", () => {
         let carr = c_array(c_type, 5);
         let buf = Buffer.alloc(c_type.size * 5);

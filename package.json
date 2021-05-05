@@ -1,6 +1,6 @@
 {
   "name": "c-type-util",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "description": "A utility module to simplify usage of Node.js's Buffers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,17 +15,22 @@
   },
   "author": "Dominic C",
   "license": "MIT",
-  "keywords": ["c", "c++", "buffer"],
+  "keywords": [
+    "c",
+    "c++",
+    "buffer"
+  ],
   "devDependencies": {
     "@types/jest": "^26.0.22",
     "jest": "^26.6.3",
-    "jest-each": "^26.6.2",
     "ts-jest": "^26.5.5",
     "typescript": "^4.2.4"
   },
-  "files": ["dist/**/*"],
-  "prepare" : "npm run build",
-  "prepublishOnly" : "npm test",
+  "files": [
+    "dist/**/*"
+  ],
+  "prepare": "npm run build",
+  "prepublishOnly": "npm test",
   "jest": {
     "transform": {
       "^.+\\.(ts|js|html)$": "ts-jest"

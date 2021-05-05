@@ -1,15 +1,15 @@
-import {ICType} from "./interfaces/ICType";
-import {IStructMember} from "./interfaces/IStructMember";
+import {ICType} from "../interfaces/ICType";
+import {IStructMembers, UnknownDict} from "../interfaces/IStructMember";
 
-export function c_struct(members: IStructMember[]): ICType {
-    type read_t = { [key: string]: any } //TODO: More precisely type this to {members.name: any}
+
+export function c_struct<S extends UnknownDict>(members: IStructMembers<S>): ICType<S> {
 
     return {
         // Adds sizes of input members.
         size: members.reduce((acc, member) => acc + member.type.size, 0),
 
-        readBE(buf: Buffer, offset: number = 0): read_t {
-            const values: read_t = {};
+        readBE(buf: Buffer, offset: number = 0): S {
+            const values: UnknownDict = {};
             let pos = offset;
 
             for (const member of members) {
@@ -17,10 +17,10 @@ export function c_struct(members: IStructMember[]): ICType {
                 pos += member.type.size;
             }
 
-            return values;
+            return values as S;
         },
-        readLE(buf: Buffer, offset: number = 0): read_t {
-            const values: read_t = {};
+        readLE(buf: Buffer, offset: number = 0): S {
+            const values: UnknownDict = {};
             let pos = offset;
 
             for (const member of members) {
@@ -28,9 +28,9 @@ export function c_struct(members: IStructMember[]): ICType {
                 pos += member.type.size;
             }
 
-            return values;
+            return values as S;
         },
-        writeBE(data: read_t, buf: Buffer, offset: number = 0): void {
+        writeBE(data: S, buf: Buffer, offset: number = 0): void {
             let pos = offset;
 
             for (const member of members) {
@@ -42,7 +42,7 @@ export function c_struct(members: IStructMember[]): ICType {
                 pos += member.type.size;
             }
         },
-        writeLE(data: read_t, buf: Buffer, offset: number = 0): void {
+        writeLE(data: S, buf: Buffer, offset: number = 0): void {
             let pos = offset;
 
             for (const member of members) {

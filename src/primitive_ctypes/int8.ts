@@ -1,17 +1,17 @@
 import {ICType} from "../interfaces/ICType";
 
-export const int16: ICType = {
+export const int8: ICType<number> = {
     readBE(buf: Buffer, offset: number = 0): number {
-        return buf.readInt16BE(offset);
+        return buf.readInt8(offset);
     },
     readLE(buf: Buffer, offset: number = 0): number {
-        return buf.readInt16LE(offset);
+        return buf.readInt8(offset);
     },
     writeBE(data: number, buf: Buffer, offset: number = 0): void {
-        buf.writeInt16BE(data, offset);
+        buf.writeInt8(data, offset);
     },
     writeLE(data: number, buf: Buffer, offset: number = 0): void {
-        buf.writeInt16LE(data, offset);
+        buf.writeInt8(data, offset);
     },
-    size: 2
+    size: 1
 }

@@ -1,10 +1,9 @@
-import {ICType} from "./interfaces/ICType";
+import {ICType} from "../interfaces/ICType";
 
-
-export function c_array(type: ICType, length: number): ICType {
+export function c_array<T>(type: ICType<T>, length: number): ICType<T[]> {
     return {
         size: type.size * length,
-        readBE(buf: Buffer, offset: number = 0): any[] {
+        readBE(buf: Buffer, offset: number = 0): T[] {
             const result = [];
             for (let i = 0; i < length; i++) {
                 const iOffset = offset + i * type.size;
@@ -12,7 +11,7 @@ export function c_array(type: ICType, length: number): ICType {
             }
             return result;
         },
-        readLE(buf: Buffer, offset: number = 0): any[] {
+        readLE(buf: Buffer, offset: number = 0): T[] {
             const result = [];
             for (let i = 0; i < length; i++) {
                 const iOffset = offset + i * type.size;
@@ -20,7 +19,7 @@ export function c_array(type: ICType, length: number): ICType {
             }
             return result;
         },
-        writeBE(data: any[], buf: Buffer, offset: number = 0): void {
+        writeBE(data: T[], buf: Buffer, offset: number = 0): void {
             if (data.length < length) throw new RangeError(`Passed data array was too short! Expected ${length} elements, got ${data.length}`);
 
             for (let i = 0; i < length; i++) {
@@ -28,7 +27,7 @@ export function c_array(type: ICType, length: number): ICType {
                 type.writeBE(data[i], buf, iOffset);
             }
         },
-        writeLE(data: any[], buf: Buffer, offset: number = 0): void {
+        writeLE(data: T[], buf: Buffer, offset: number = 0): void {
             if (data.length < length) throw new RangeError(`Passed data array was too short! Expected ${length} elements, got ${data.length}`);
 
             for (let i = 0; i < length; i++) {

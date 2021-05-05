@@ -1,10 +1,8 @@
-import {number_types} from "../index";
+import {number_types} from "../src";
+import {ICType} from "../src";
 
-import each from "jest-each";
-import {ICType} from "../interfaces/ICType";
-
-describe("number types", () => {
-    each(Object.values(number_types)).it("encodes and decodes simple vals", (c_type: ICType) => {
+describe.each(Object.values(number_types))("number types", (c_type: ICType<number>) => {
+    it("encodes and decodes simple vals", () => {
         let buf = Buffer.alloc(8);
         let test_num = 69;
 

@@ -1,4 +1,4 @@
-import {end, uint32} from "../index";
+import {end, uint32} from "../src";
 
 describe("end type modifier", () => {
     it("encodes LE", () => {

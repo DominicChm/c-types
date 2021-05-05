@@ -1,7 +1,7 @@
 import {ICType} from "../interfaces/ICType";
 
 //TODO: Allow for disabling these checks for performance.
-export function check_inputs(c_type: ICType, buf: Buffer, offset: number) {
+export function check_inputs<T>(c_type: ICType<T>, buf: Buffer, offset: number) {
     //Existence checks
     if(!c_type) throw new Error(`passed c_type was falsy`);
     if(!buf) throw new Error(`passed buffer was falsy`);
