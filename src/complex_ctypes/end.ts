@@ -10,13 +10,13 @@ export function end<T>(c_type: ICType<T>, endian: "little" | "big" = "little"): 
             return {
                 read: c_type.readLE,
                 write: c_type.writeLE,
-                size: 0,
+                size: c_type.size,
             };
         case "big":
             return {
                 read: c_type.readBE,
                 write: c_type.writeBE,
-                size: 0,
+                size: c_type.size,
             };
     }
 }
