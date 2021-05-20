@@ -1,4 +1,5 @@
 import {c_string, uint16, uint32, c_struct} from "../src"
+import {testAlloc} from "./testAlloc";
 
 interface ITestStruct {
     u16_test: number,
@@ -60,6 +61,20 @@ describe("c_struct", () => {
         struct.writeBE(test_data, buf);
 
         expect(struct.readBE(buf)).toEqual(test_data);
+    });
+
+    it("allocates", () => {
+        const struct = c_struct<ITestStruct>({
+            u16_test: uint16,
+            u32_test: uint32
+        })
+
+        const test_data = {
+            u32_test: 1,
+            u16_test: 2,
+        }
+
+        testAlloc(test_data, struct);
     });
 })
 

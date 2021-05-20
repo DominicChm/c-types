@@ -1,4 +1,5 @@
 import {c_string} from "../src"
+import {testAlloc} from "./testAlloc";
 
 describe("c_string", () => {
     it("truncates strings longer than can fit", () => {
@@ -24,6 +25,13 @@ describe("c_string", () => {
 
         cstr.writeBE("test123", buf);
         expect(cstr.readBE(buf)).toBe("test123");
+    });
+
+    it("allocates", () => {
+        let cstr = c_string(10);
+        let str = "test_str"
+
+        testAlloc(str, cstr);
     });
 })
 

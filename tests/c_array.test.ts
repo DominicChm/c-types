@@ -1,4 +1,5 @@
 import {c_array, number_types, CType} from "../src"
+import {testAlloc} from "./testAlloc";
 
 describe.each(Object.values(number_types))("c_array", (c_type: CType<number>) => {
     test("short data write", () => {
@@ -20,5 +21,11 @@ describe.each(Object.values(number_types))("c_array", (c_type: CType<number>) =>
 
         carr.writeBE(data, buf)
         expect(carr.readBE(buf)).toEqual(data)
+    })
+
+    it("allocates", () => {
+        let data = [1, 69, 81, 90, 0];
+        let carr = c_array(c_type, 5);
+        testAlloc(data, carr);
     })
 })

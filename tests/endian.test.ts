@@ -46,7 +46,13 @@ describe("end type modifier", () => {
         expect(uint32.readLE(buf)).toBe(testNum)
     });
 
-    it("processes alloc'd ctypes", () => {
+    it("allocates", () => {
+        const u32le = end(uint32, "little");
+        const u32be = end(uint32, "little");
 
+        const data = 0x12345678;
+
+        expect(u32le.read(u32le.alloc(data))).toBe(data)
+        expect(u32be.read(u32be.alloc(data))).toBe(data)
     });
 });

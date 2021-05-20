@@ -35,6 +35,7 @@ uint32.readLE(buf, 4);
 // isolates either LE or BE r/w functions
 const simpler_ctype = end(uint32, "little");
 simpler_ctype.write(123, buf);
+simpler_ctype.alloc(1234);
 simpler_ctype.read(buf);
 
 // Example Struct
@@ -58,5 +59,9 @@ struct.writeLE({
 }, buf)
 
 console.log(struct.readLE(buf))
+
+//Any ctype has `allocLE` and `allocBE` functions that return a written buffer.
+const buffer = uint32.allocLE(1234);
+console.log(buffer);
 
 ```
