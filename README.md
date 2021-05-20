@@ -45,20 +45,16 @@ interface struct_t {
     example_member_array: number[],
 }
 
-const struct = c_struct<struct_t>([
-    {
-        type: uint32,
-        name: "example_member32"
-    },
-    {
-        type: c_array(uint16, 4),
-        name: "example_member_array"
-    }
-])
+const struct = c_struct<struct_t>({
+    example_member32: uint32,
+    example_member_array: c_array(uint16, 4),
+    example_string: c_string(32)
+})
 
 struct.writeLE({
     example_member32: 1,
-    example_member_array: [1, 2, 3, 4]
+    example_member_array: [1, 2, 3, 4],
+    example_string: "test string"
 }, buf)
 
 console.log(struct.readLE(buf))
