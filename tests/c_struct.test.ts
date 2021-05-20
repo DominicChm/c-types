@@ -1,24 +1,16 @@
 import {c_string, uint16, uint32, c_struct} from "../src"
 
 interface ITestStruct {
-    [key: string]: number;
-
     u16_test: number,
     u32_test: number
 }
 
 describe("c_struct", () => {
     it("encodes LE correctly", () => {
-        const struct = c_struct<ITestStruct>([
-            {
-                name: "u16_test",
-                type: uint16,
-            },
-            {
-                name: "u32_test",
-                type: uint32
-            }
-        ])
+        const struct = c_struct<ITestStruct>({
+            u16_test: uint16,
+            u32_test: uint32
+        })
 
         const test_data = {
             u32_test: 1,
@@ -34,16 +26,10 @@ describe("c_struct", () => {
     });
 
     it("encodes BE correctly", () => {
-        const struct = c_struct<ITestStruct>([
-            {
-                name: "u16_test",
-                type: uint16,
-            },
-            {
-                name: "u32_test",
-                type: uint32
-            }
-        ])
+        const struct = c_struct<ITestStruct>({
+            u16_test: uint16,
+            u32_test: uint32
+        })
 
         const test_data = {
             u32_test: 1,
@@ -59,16 +45,10 @@ describe("c_struct", () => {
     });
 
     it("encodes, then decodes", () => {
-        const struct = c_struct<ITestStruct>([
-            {
-                name: "u16_test",
-                type: uint16,
-            },
-            {
-                name: "u32_test",
-                type: uint32
-            }
-        ])
+        const struct = c_struct<ITestStruct>({
+            u16_test: uint16,
+            u32_test: uint32
+        })
 
         const test_data = {
             u32_test: 1,

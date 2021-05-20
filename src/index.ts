@@ -17,16 +17,16 @@ import {c_struct} from "./complex_ctypes/c_struct"
 import {end} from "./complex_ctypes/end"
 
 //Import types
-import {ICType} from "./interfaces/ICType"
-import {ICTypeConstEndian} from "./interfaces/ICTypeConstEndian"
-import {IStructMembers} from "./interfaces/IStructMember"
+import {CType} from "./interfaces/CType"
+import {CTypeEndian} from "./interfaces/CTypeEndian"
+import {StructMembers} from "./interfaces/StructMembers"
 
 //Export generator functions
 export {uint8, uint16, uint32}
 export {int8, int16, int32}
 export {float, double}
 export {c_string, c_array, end, c_struct}
-export {ICType, ICTypeConstEndian, IStructMembers}
+export {CType, CTypeEndian, StructMembers}
 
 export let number_types = {uint8, uint16, uint32, int8, int16, int32, float, double};
 

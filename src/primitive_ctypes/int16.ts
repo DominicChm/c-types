@@ -1,6 +1,6 @@
-import {ICType} from "../interfaces/ICType";
+import {CType} from "../interfaces/CType";
 
-export const int16: ICType<number> = {
+export const int16: CType<number> = {
     readBE(buf: Buffer, offset: number = 0): number {
         return buf.readInt16BE(offset);
     },

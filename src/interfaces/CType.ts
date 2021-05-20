@@ -1,4 +1,4 @@
-export interface ICType<T> {
+export interface CType<T> {
     size: number;
     readLE: (buf: Buffer, offset?: number) => T;
     readBE: (buf: Buffer, offset?: number) => T;

@@ -1,10 +1,10 @@
-import {ICType} from "../interfaces/ICType";
-import {ICTypeConstEndian} from "../interfaces/ICTypeConstEndian";
+import {CType} from "../interfaces/CType";
+import {CTypeEndian} from "../interfaces/CTypeEndian";
 
 /** Helper function that isolates either the big-endian or little-endian r/w functions of a type. Useful as a pre-step
  * for generalized fns that handle both big and little-endian inputs.
  * */
-export function end<T>(c_type: ICType<T>, endian: "little" | "big" = "little"): ICTypeConstEndian<T> {
+export function end<T>(c_type: CType<T>, endian: "little" | "big" = "little"): CTypeEndian<T> {
     switch (endian) {
         case "little":
             return {

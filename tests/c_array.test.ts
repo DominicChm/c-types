@@ -1,6 +1,6 @@
-import {c_array, number_types, ICType} from "../src"
+import {c_array, number_types, CType} from "../src"
 
-describe.each(Object.values(number_types))("c_array", (c_type: ICType<number>) => {
+describe.each(Object.values(number_types))("c_array", (c_type: CType<number>) => {
     test("short data write", () => {
         let carr = c_array(c_type, 5);
         let buf = Buffer.alloc(c_type.size * 5);

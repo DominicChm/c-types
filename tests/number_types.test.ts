@@ -1,7 +1,7 @@
 import {number_types} from "../src";
-import {ICType} from "../src";
+import {CType} from "../src";
 
-describe.each(Object.values(number_types))("number types", (c_type: ICType<number>) => {
+describe.each(Object.values(number_types))("number types", (c_type: CType<number>) => {
     it("encodes and decodes simple vals", () => {
         let buf = Buffer.alloc(8);
         let test_num = 69;

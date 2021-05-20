@@ -1,7 +1,7 @@
-import {ICType} from "../interfaces/ICType";
+import {CType} from "../interfaces/CType";
 import {strlen} from "../util/strlen";
 
-export function c_string(length: number): ICType<string> {
+export function c_string(length: number): CType<string> {
     const size = length;
 
     return {
