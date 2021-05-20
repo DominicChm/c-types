@@ -1,6 +1,5 @@
 import {CType} from "../interfaces/CType";
 import {StructMembers} from "../interfaces/StructMembers";
-import {ICType} from "../../dist";
 
 export function c_struct<S extends Record<string, any>>(members: StructMembers<S>): CType<S> {
 
@@ -33,7 +32,7 @@ export function c_struct<S extends Record<string, any>>(members: StructMembers<S
         writeBE(data: S, buf: Buffer, offset: number = 0): void {
             let pos = offset;
 
-            for (let [k, member] of Object.entries<ICType<any>>(members)) {
+            for (let [k, member] of Object.entries<CType<any>>(members)) {
                 const dat = data[k];
                 if (dat === undefined) throw new Error(`field >${k}< on passed object was undefined!`)
 
@@ -44,7 +43,7 @@ export function c_struct<S extends Record<string, any>>(members: StructMembers<S
         writeLE(data: S, buf: Buffer, offset: number = 0): void {
             let pos = offset;
 
-            for (let [k, member] of Object.entries<ICType<any>>(members)) {
+            for (let [k, member] of Object.entries<CType<any>>(members)) {
                 const dat = data[k];
                 if (dat === undefined) throw new Error(`field >${k}< on passed object was undefined!`)
 
