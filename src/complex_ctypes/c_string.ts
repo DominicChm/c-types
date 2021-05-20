@@ -1,10 +1,11 @@
 import {CType} from "../interfaces/CType";
 import {strlen} from "../util/strlen";
+import {patchAlloc} from "../util/patchAlloc";
 
 export function c_string(length: number): CType<string> {
     const size = length;
 
-    return {
+    return patchAlloc({
         readBE(buf: Buffer, offset: number = 0): string {
             const s_len = strlen(buf, offset, length);
             return buf.toString("ascii", offset, offset + s_len);
@@ -27,5 +28,5 @@ export function c_string(length: number): CType<string> {
             buf.writeUInt8(0x00, offset + size - 1);
         },
         size
-    }
+    });
 }

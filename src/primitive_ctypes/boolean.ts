@@ -1,6 +1,7 @@
 import {CType} from "../interfaces/CType";
+import {patchAlloc} from "../util/patchAlloc";
 
-export const boolean: CType<boolean> = {
+export const boolean: CType<boolean> = patchAlloc({
     readBE(buf: Buffer, offset: number = 0): boolean {
         return !!buf.readUInt8(offset);
     },
@@ -14,4 +15,5 @@ export const boolean: CType<boolean> = {
         buf.writeUInt8(Number(data), offset);
     },
     size: 1
-}
+});
+

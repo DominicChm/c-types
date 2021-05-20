@@ -1,7 +1,8 @@
 import {CType} from "../interfaces/CType";
+import {patchAlloc} from "../util/patchAlloc";
 
 export function c_array<T>(type: CType<T>, length: number): CType<T[]> {
-    return {
+    return patchAlloc({
         size: type.size * length,
         readBE(buf: Buffer, offset: number = 0): T[] {
             const result = [];
@@ -35,5 +36,5 @@ export function c_array<T>(type: CType<T>, length: number): CType<T[]> {
                 type.writeLE(data[i], buf, iOffset);
             }
         }
-    }
+    });
 }

@@ -1,11 +1,7 @@
-export interface CType<T> {
-    size: number;
+import {CTypeBase} from "./CTypeBase";
 
-    readLE(buf: Buffer, offset?: number): T;
+export interface CType<T> extends CTypeBase<T> {
+    allocLE(data: T): Buffer;
 
-    readBE(buf: Buffer, offset?: number): T;
-
-    writeLE(data: T, buf: Buffer, offset?: number): void;
-
-    writeBE(data: T, buf: Buffer, offset?: number): void;
+    allocBE(data: T): Buffer;
 }

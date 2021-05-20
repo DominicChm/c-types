@@ -1,6 +1,7 @@
 import {CType} from "../interfaces/CType";
+import {patchAlloc} from "../util/patchAlloc";
 
-export const float: CType<number> = {
+export const float: CType<number> = patchAlloc({
     readBE(buf: Buffer, offset: number = 0): number {
         return buf.readFloatBE(offset);
     },
@@ -14,4 +15,4 @@ export const float: CType<number> = {
         buf.writeFloatLE(data, offset);
     },
     size: 4
-}
+});

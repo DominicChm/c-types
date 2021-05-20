@@ -1,9 +1,10 @@
 import {CType} from "../interfaces/CType";
 import {StructMembers} from "../interfaces/StructMembers";
+import {patchAlloc} from "../util/patchAlloc";
 
 export function c_struct<S extends Record<string, any>>(members: StructMembers<S>): CType<S> {
 
-    return {
+    return patchAlloc({
         // Adds sizes of input members.
         size: Object.values<CType<any>>(members).reduce((acc, member) => acc + member.size, 0),
 
@@ -51,5 +52,5 @@ export function c_struct<S extends Record<string, any>>(members: StructMembers<S
                 pos += member.size;
             }
         }
-    }
+    })
 }
