@@ -1,4 +1,4 @@
-import {c_string, uint16, uint32, c_struct} from "../src"
+import {cString, uint16, uint32, cStruct} from "../src"
 import {testAlloc} from "./testAlloc";
 
 interface ITestStruct {
@@ -8,7 +8,7 @@ interface ITestStruct {
 
 describe("c_struct", () => {
     it("encodes LE correctly", () => {
-        const struct = c_struct<ITestStruct>({
+        const struct = cStruct<ITestStruct>({
             u16_test: uint16,
             u32_test: uint32
         })
@@ -27,7 +27,7 @@ describe("c_struct", () => {
     });
 
     it("encodes BE correctly", () => {
-        const struct = c_struct<ITestStruct>({
+        const struct = cStruct<ITestStruct>({
             u16_test: uint16,
             u32_test: uint32
         })
@@ -46,7 +46,7 @@ describe("c_struct", () => {
     });
 
     it("encodes, then decodes", () => {
-        const struct = c_struct<ITestStruct>({
+        const struct = cStruct<ITestStruct>({
             u16_test: uint16,
             u32_test: uint32
         })
@@ -64,7 +64,7 @@ describe("c_struct", () => {
     });
 
     it("allocates", () => {
-        const struct = c_struct<ITestStruct>({
+        const struct = cStruct<ITestStruct>({
             u16_test: uint16,
             u32_test: uint32
         })

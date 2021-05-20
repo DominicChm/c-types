@@ -1,23 +1,23 @@
-import {c_string} from "../src"
+import {cString} from "../src"
 import {testAlloc} from "./testAlloc";
 
 describe("c_string", () => {
     it("truncates strings longer than can fit", () => {
-        let cstr = c_string(5);
+        let cstr = cString(5);
         let buf = Buffer.from("test_test_test_test");
 
         expect(cstr.readLE(buf)).toBe("test_");
     });
 
     it("it fits strings correctly than can fit", () => {
-        let cstr = c_string(10);
+        let cstr = cString(10);
         let buf = Buffer.from("test");
 
         expect(cstr.readLE(buf)).toBe("test");
     });
 
     it("encodes, then decodes", () => {
-        let cstr = c_string(10);
+        let cstr = cString(10);
         let buf = Buffer.alloc(11);
 
         cstr.writeLE("test123", buf);
@@ -28,7 +28,7 @@ describe("c_string", () => {
     });
 
     it("allocates", () => {
-        let cstr = c_string(10);
+        let cstr = cString(10);
         let str = "test_str"
 
         testAlloc(str, cstr);

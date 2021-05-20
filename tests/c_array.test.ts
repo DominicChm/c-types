@@ -1,9 +1,9 @@
-import {c_array, number_types, CType} from "../src"
+import {cArray, number_types, CType} from "../src"
 import {testAlloc} from "./testAlloc";
 
 describe.each(Object.values(number_types))("c_array", (c_type: CType<number>) => {
     test("short data write", () => {
-        let carr = c_array(c_type, 5);
+        let carr = cArray(c_type, 5);
         let buf = Buffer.alloc(c_type.size * 5);
         let data = [1, 69, 81];
 
@@ -12,7 +12,7 @@ describe.each(Object.values(number_types))("c_array", (c_type: CType<number>) =>
     })
 
     it("encodes and decodes", () => {
-        let carr = c_array(c_type, 5);
+        let carr = cArray(c_type, 5);
         let buf = Buffer.alloc(c_type.size * 5);
         let data = [1, 69, 81, 90, 0];
 
@@ -25,7 +25,7 @@ describe.each(Object.values(number_types))("c_array", (c_type: CType<number>) =>
 
     it("allocates", () => {
         let data = [1, 69, 81, 90, 0];
-        let carr = c_array(c_type, 5);
+        let carr = cArray(c_type, 5);
         testAlloc(data, carr);
     })
 })

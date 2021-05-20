@@ -11,7 +11,7 @@ useful for creating dynamic parsers.
 ## Usage
 
 ```typescript
-import {uint32, uint16, c_array, c_string, end, c_struct} from "c-type-util";
+import {uint32, uint16, c_array, cString, end, cStruct} from "c-type-util";
 
 //Big buffer for testing purposes
 let buf = Buffer.alloc(128);
@@ -21,10 +21,10 @@ uint32.writeLE(123, buf);
 console.log(uint32.readLE(buf));
 
 // Arrays
-const array_type = c_array(uint32, 3);
+const array_type = cArray(uint32, 3);
 array_type.writeLE([1, 2, 3], buf);
 
-const string_type = c_string(10);
+const string_type = cString(10);
 string_type.writeLE("test", buf);
 
 // Offsets
@@ -40,13 +40,12 @@ simpler_ctype.read(buf);
 
 // Example Struct
 interface struct_t {
-    [key: string]: any
-
-    example_member32: number,
-    example_member_array: number[],
+    example_member32: number;
+    example_member_array: number[];
+    example_string: string;
 }
 
-const struct = c_struct<struct_t>({
+const struct = cStruct<struct_t>({
     example_member32: uint32,
     example_member_array: c_array(uint16, 4),
     example_string: c_string(32)

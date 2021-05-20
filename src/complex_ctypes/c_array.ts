@@ -1,7 +1,7 @@
 import {CType} from "../interfaces/CType";
 import {patchAlloc} from "../util/patchAlloc";
 
-export function c_array<T>(type: CType<T>, length: number): CType<T[]> {
+export function cArray<T>(type: CType<T>, length: number): CType<T[]> {
     return patchAlloc({
         size: type.size * length,
         readBE(buf: Buffer, offset: number = 0): T[] {

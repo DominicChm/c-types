@@ -2,7 +2,7 @@ import {CType} from "../interfaces/CType";
 import {strlen} from "../util/strlen";
 import {patchAlloc} from "../util/patchAlloc";
 
-export function c_string(length: number): CType<string> {
+export function cString(length: number): CType<string> {
     const size = length;
 
     return patchAlloc({
