@@ -18,8 +18,8 @@ describe("c_struct", () => {
             u16_test: 2,
         }
 
-        let expected = Buffer.from([0x02, 0x00, 0x01, 0x00, 0x00, 0x00]);
-        let actual = Buffer.alloc(struct.size);
+        let expected = Buffer.from([0x02, 0x00, 0x01, 0x00, 0x00, 0x00]).buffer;
+        let actual = Buffer.alloc(struct.size).buffer;
 
         struct.writeLE(test_data, actual);
 
@@ -37,8 +37,8 @@ describe("c_struct", () => {
             u16_test: 2,
         }
 
-        let expected = Buffer.from([0x00, 0x02, 0x00, 0x00, 0x00, 0x01]);
-        let actual = Buffer.alloc(struct.size);
+        let expected = Buffer.from([0x00, 0x02, 0x00, 0x00, 0x00, 0x01]).buffer;
+        let actual = Buffer.alloc(struct.size).buffer;
 
         struct.writeBE(test_data, actual);
 
@@ -56,7 +56,7 @@ describe("c_struct", () => {
             u16_test: 2,
         }
 
-        let buf = Buffer.alloc(struct.size);
+        let buf = Buffer.alloc(struct.size).buffer;
 
         struct.writeBE(test_data, buf);
 

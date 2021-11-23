@@ -1,9 +1,9 @@
 export interface CTypeEndian<T> {
     size: number;
 
-    read(buf: Buffer, offset?: number): T;
+    read(buf: ArrayBuffer, offset?: number): T;
 
-    write(data: T, buf: Buffer, offset?: number): void;
+    write(data: T, buf: ArrayBuffer, offset?: number): void;
 
-    alloc(data: T): Buffer;
+    alloc(data: T): ArrayBuffer;
 }

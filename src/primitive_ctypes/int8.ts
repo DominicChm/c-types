@@ -2,17 +2,17 @@ import {CType} from "../interfaces/CType";
 import {patchAlloc} from "../util/patchAlloc";
 
 export const int8: CType<number> = patchAlloc({
-    readBE(buf: Buffer, offset: number = 0): number {
-        return buf.readInt8(offset);
+    readBE(buf: ArrayBuffer, offset: number = 0): number {
+        return new DataView(buf).getInt8(offset);
     },
-    readLE(buf: Buffer, offset: number = 0): number {
-        return buf.readInt8(offset);
+    readLE(buf: ArrayBuffer, offset: number = 0): number {
+        return new DataView(buf).getInt8(offset);
     },
-    writeBE(data: number, buf: Buffer, offset: number = 0): void {
-        buf.writeInt8(data, offset);
+    writeBE(data: number, buf: ArrayBuffer, offset: number = 0): void {
+        new DataView(buf).setInt8(offset, data);
     },
-    writeLE(data: number, buf: Buffer, offset: number = 0): void {
-        buf.writeInt8(data, offset);
+    writeLE(data: number, buf: ArrayBuffer, offset: number = 0): void {
+        new DataView(buf).setInt8(offset, data);
     },
     size: 1
 });

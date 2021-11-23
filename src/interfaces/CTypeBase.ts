@@ -1,11 +1,11 @@
 export interface CTypeBase<T> {
     size: number;
 
-    readLE(buf: Buffer, offset?: number): T;
+    readLE(buf: ArrayBuffer, offset?: number): T;
 
-    readBE(buf: Buffer, offset?: number): T;
+    readBE(buf: ArrayBuffer, offset?: number): T;
 
-    writeLE(data: T, buf: Buffer, offset?: number): void;
+    writeLE(data: T, buf: ArrayBuffer, offset?: number): void;
 
-    writeBE(data: T, buf: Buffer, offset?: number): void;
+    writeBE(data: T, buf: ArrayBuffer, offset?: number): void;
 }

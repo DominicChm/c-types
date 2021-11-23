@@ -1,6 +1,6 @@
 {
   "name": "c-type-util",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "A utility module to simplify usage of Node.js's Buffers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -41,5 +41,8 @@
       "tsx",
       "js"
     ]
+  },
+  "dependencies": {
+    "browser-or-node": "^2.0.0"
   }
 }

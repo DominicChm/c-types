@@ -8,7 +8,7 @@ export function cStruct<S extends Record<string, any>>(members: StructMembers<S>
         // Adds sizes of input members.
         size: Object.values<CType<any>>(members).reduce((acc, member) => acc + member.size, 0),
 
-        readBE(buf: Buffer, offset: number = 0): S {
+        readBE(buf: ArrayBuffer, offset: number = 0): S {
             const values: any = {};
             let pos = offset;
 
@@ -19,7 +19,7 @@ export function cStruct<S extends Record<string, any>>(members: StructMembers<S>
 
             return values as S;
         },
-        readLE(buf: Buffer, offset: number = 0): S {
+        readLE(buf: ArrayBuffer, offset: number = 0): S {
             const values: any = {};
             let pos = offset;
 
@@ -30,7 +30,7 @@ export function cStruct<S extends Record<string, any>>(members: StructMembers<S>
 
             return values as S;
         },
-        writeBE(data: S, buf: Buffer, offset: number = 0): void {
+        writeBE(data: S, buf: ArrayBuffer, offset: number = 0): void {
             let pos = offset;
 
             for (let [k, member] of Object.entries<CType<any>>(members)) {
@@ -41,7 +41,7 @@ export function cStruct<S extends Record<string, any>>(members: StructMembers<S>
                 pos += member.size;
             }
         },
-        writeLE(data: S, buf: Buffer, offset: number = 0): void {
+        writeLE(data: S, buf: ArrayBuffer, offset: number = 0): void {
             let pos = offset;
 
             for (let [k, member] of Object.entries<CType<any>>(members)) {

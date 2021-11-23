@@ -4,7 +4,7 @@ import {patchAlloc} from "../util/patchAlloc";
 export function cArray<T>(type: CType<T>, length: number): CType<T[]> {
     return patchAlloc({
         size: type.size * length,
-        readBE(buf: Buffer, offset: number = 0): T[] {
+        readBE(buf: ArrayBuffer, offset: number = 0): T[] {
             const result = [];
             for (let i = 0; i < length; i++) {
                 const iOffset = offset + i * type.size;
@@ -12,7 +12,7 @@ export function cArray<T>(type: CType<T>, length: number): CType<T[]> {
             }
             return result;
         },
-        readLE(buf: Buffer, offset: number = 0): T[] {
+        readLE(buf: ArrayBuffer, offset: number = 0): T[] {
             const result = [];
             for (let i = 0; i < length; i++) {
                 const iOffset = offset + i * type.size;
@@ -20,7 +20,7 @@ export function cArray<T>(type: CType<T>, length: number): CType<T[]> {
             }
             return result;
         },
-        writeBE(data: T[], buf: Buffer, offset: number = 0): void {
+        writeBE(data: T[], buf: ArrayBuffer, offset: number = 0): void {
             if (data.length < length) throw new RangeError(`Passed data array was too short! Expected ${length} elements, got ${data.length}`);
 
             for (let i = 0; i < length; i++) {
@@ -28,7 +28,7 @@ export function cArray<T>(type: CType<T>, length: number): CType<T[]> {
                 type.writeBE(data[i], buf, iOffset);
             }
         },
-        writeLE(data: T[], buf: Buffer, offset: number = 0): void {
+        writeLE(data: T[], buf: ArrayBuffer, offset: number = 0): void {
             if (data.length < length) throw new RangeError(`Passed data array was too short! Expected ${length} elements, got ${data.length}`);
 
             for (let i = 0; i < length; i++) {

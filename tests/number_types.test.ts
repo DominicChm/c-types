@@ -3,7 +3,7 @@ import {CType} from "../src";
 
 describe.each(Object.values(number_types))("number types", (c_type: CType<number>) => {
     it("encodes and decodes simple vals", () => {
-        let buf = Buffer.alloc(8);
+        let buf = Buffer.alloc(8).buffer;
         let test_num = 69;
 
         c_type.writeBE(69, buf);

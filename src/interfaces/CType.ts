@@ -1,7 +1,7 @@
 import {CTypeBase} from "./CTypeBase";
 
 export interface CType<T> extends CTypeBase<T> {
-    allocLE(data: T): Buffer;
+    allocLE(data: T): ArrayBuffer;
 
-    allocBE(data: T): Buffer;
+    allocBE(data: T): ArrayBuffer;
 }
