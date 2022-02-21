@@ -9,10 +9,10 @@ export const boolean: CType<boolean> = patchAlloc({
         return !!new DataView(buf).getUint8(offset);
     },
     writeBE(data: boolean, buf: ArrayBuffer, offset: number = 0): void {
-        new DataView(buf).setUint8(Number(data), offset);
+        new DataView(buf).setUint8(offset, Number(data));
     },
     writeLE(data: boolean, buf: ArrayBuffer, offset: number = 0): void {
-        new DataView(buf).setUint8(Number(data), offset);
+        new DataView(buf).setUint8(offset, Number(data));
     },
     size: 1
 });
